@@ -131,6 +131,10 @@ typedef NS_ENUM(NSInteger, DZNPhotoAspect) {
     [self.view addSubview:self.bottomView];
     
     self.imageView.image = self.editingImage;
+    if (self.editingImage.size.height < CGRectGetWidth(self.imageView.frame)){
+        _scrollView.minimumZoomScale = CGRectGetWidth(self.imageView.frame) / self.editingImage.size.height;
+
+    }
     [self.view insertSubview:self.maskView aboveSubview:self.scrollView];
     
     NSDictionary *views = @{@"bottomView": self.bottomView};
